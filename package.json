@@ -1,0 +1,17 @@
+{
+  "name": "@instago/jira",
+  "version": "1.0.1",
+  "description": "Module jira",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "jira"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}

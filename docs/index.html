@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jira Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/jira - V8 module</h1>
+      <p class="intro">Make Jira updates part of your automated workflows without having to learn the API surface. This module focuses on the most common ticket actions so your flows stay small and easy to read.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/jira - V8 module</h1>
+<p>Make Jira updates part of your automated workflows without having to learn the API surface. This module focuses on the most common ticket actions so your flows stay small and easy to read.</p>
+<p>If you need more context on the platform, visit https://instago.ai.</p>
+<h2>Technical reference</h2>
+<p>Exports:</p>
+<ul>
+<li><code>configure({ baseUrl, user, apiToken })</code></li>
+<li><code>createIssue({ projectKey, summary, description?, fields? })</code></li>
+<li><code>transitionIssue({ issueKey, transitionId })</code></li>
+<li><code>addComment({ issueKey, body })</code></li>
+</ul>
+<p>Usage:</p>
+<pre class="code"><code>
+const jira = require(&#x27;jira@latest&#x27;);
+
+jira.configure({
+  baseUrl: &#x27;https://your-org.atlassian.net&#x27;,
+  user: &#x27;you@company.com&#x27;,
+  apiToken: &#x27;api-token&#x27;
+});
+</code></pre>
+<p>Configuration:</p>
+<ul>
+<li><code>configure({ baseUrl, user, apiToken })</code> to set defaults in memory.</li>
+<li>Optional env keys: <code>jira.baseUrl</code>, <code>jira.user</code>, <code>jira.apiToken</code>.</li>
+</ul>
+<p>Examples:</p>
+<pre class="code"><code>
+const jira = require(&#x27;jira@latest&#x27;);
+
+jira.configure({ baseUrl: env.JIRA_URL, user: env.JIRA_USER, apiToken: env.JIRA_API_TOKEN });
+
+const created = await jira.createIssue({
+  projectKey: &#x27;ENG&#x27;,
+  summary: &#x27;Bug report&#x27;,
+  description: &#x27;Steps to reproduce...&#x27;
+});
+
+const moved = await jira.transitionIssue({ issueKey: &#x27;ENG-123&#x27;, transitionId: &#x27;31&#x27; });
+const commented = await jira.addComment({ issueKey: &#x27;ENG-123&#x27;, body: &#x27;Investigating.&#x27; });
+</code></pre>
+<p>Returns:</p>
+<ul>
+<li>All calls resolve to <code>{ ok, data, error }</code>.</li>
+</ul>
+      </div>
+      
+    </main>
+  </body>
+</html>
