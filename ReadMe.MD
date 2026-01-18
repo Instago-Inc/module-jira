@@ -1,8 +1,8 @@
 # module/jira - V8 module
 
-Make Jira updates part of your automated workflows without having to learn the API surface. This module focuses on the most common ticket actions so your flows stay small and easy to read.
+Keep Jira work visible in your automations without digging through API docs. This module focuses on a few common ticket actions so your flows stay clear and lightweight.
 
-If you need more context on the platform, visit https://instago.ai.
+Learn more about the platform at https://instago.ai.
 
 ## Technical reference
 
@@ -24,14 +24,18 @@ jira.configure({
 ```
 
 Configuration:
-- `configure({ baseUrl, user, apiToken })` to set defaults in memory.
+- `configure({ baseUrl, user, apiToken })` stores defaults in memory for subsequent calls.
 - Optional env keys: `jira.baseUrl`, `jira.user`, `jira.apiToken`.
 
 Examples:
 ```js
 const jira = require('jira@latest');
 
-jira.configure({ baseUrl: env.JIRA_URL, user: env.JIRA_USER, apiToken: env.JIRA_API_TOKEN });
+jira.configure({
+  baseUrl: env.JIRA_URL,
+  user: env.JIRA_USER,
+  apiToken: env.JIRA_API_TOKEN
+});
 
 const created = await jira.createIssue({
   projectKey: 'ENG',
@@ -39,8 +43,15 @@ const created = await jira.createIssue({
   description: 'Steps to reproduce...'
 });
 
-const moved = await jira.transitionIssue({ issueKey: 'ENG-123', transitionId: '31' });
-const commented = await jira.addComment({ issueKey: 'ENG-123', body: 'Investigating.' });
+const moved = await jira.transitionIssue({
+  issueKey: 'ENG-123',
+  transitionId: '31'
+});
+
+const commented = await jira.addComment({
+  issueKey: 'ENG-123',
+  body: 'Investigating.'
+});
 ```
 
 Returns:

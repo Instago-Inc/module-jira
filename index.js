@@ -1,5 +1,5 @@
-// jira@1.0.0 — minimal Jira Cloud helper (REST API v3)
-// Auth: Basic (email + API token), env via env@1.0.0 (jira.user/jira.apiToken)
+// jira@latest — minimal Jira Cloud helper (REST API v3)
+// Auth: Basic (email + API token), env via env@latest (jira.user/jira.apiToken)
 // API:
 // - configure({ baseUrl, user, apiToken })
 // - createIssue({ projectKey, summary, description?, fields? })
@@ -7,9 +7,9 @@
 // - addComment({ issueKey, body })
 
 (function(){
-  const httpx = require('http@1.0.0');
-  const b64 = require('b64@1.0.0');
-  const log = require('log@1.0.0').create('jira');
+  const httpx = require('http@latest');
+  const b64 = require('b64@latest');
+  const log = require('log@latest').create('jira');
 
   const cfg = { baseUrl: null, user: null, apiToken: null };
 
